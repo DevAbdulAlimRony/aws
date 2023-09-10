@@ -1,0 +1,23 @@
+- Cloud computing is the on-demand delivery of computer power, database storage, applications and other IT resources. Through a cloud services platform with pay-as-you-go pricing. You can provision exactly the right type and size of computing resources you need. It is a simple way to access servers, storage, databases and set of application services.
+
+- Amazon Web Services(AWS) owns and maintains the network-connected hardware required for these application services. Ex. Dropbox cloud storage service originally built on aws, e-mail cloud service, netflix that built on aws.
+
+- Private Cloud: Cloud Services used by a single organization, not exposed to the public.
+
+- Public Cloud: Cloud resources owned and operated by a third-party cloud service provider delivered over the Internet. Three famous public cloud providers are microsoft azure, google cloud and aws.
+
+- Hybrid Cloud: Keep some servers on premises and extend some capabilities to the cloud.
+
+- The five chars of cloud computing:
+        1. On-Demand Self Service: Users can provision resources and use them without human interaction from the service provider.
+        2. Broad Network Access: Resources available over the network and can be accessed by the diverse client platforms.
+        3. Multi-Tenancy and Resource Pooling: Multiple customers can share the same infrastructure and applications with security and privacy.
+        4. Rapid Elasticity and Scalability: Quickly and easily scale based on demand.
+        5. Measured Services: Usage is measured, users pay correctly for what they have used.
+
+- Types of Cloud Computing:
+        1. Infrastructure as a Service(IaaS): provide building blocks like networking, computers, data storage space. Manage virtualization, servers, storage, networking. Ex. Amazon EC2, GCP, Azure, Digital Ocean, Linode
+
+        2. Platform as a service(PaaS): Removes the need for your organization to manage the underlying infrastructure. Focus on the deployment and management of your applications. Manage from IaaS all and also O/S, middleware, runtime. Ex. Elastic Beanstalk on AWS, Heroku, Google app engine, windows azure.
+
+        3. Software as a Service (SaaS): Completed product that is run and managed by the service provider. If we use SaaS, everything is managed by AWS including applications, data. Ex. Many AWS services, google apps like gmail, Dropbox, Zoom.
