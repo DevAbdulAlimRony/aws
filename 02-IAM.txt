@@ -1,0 +1,56 @@
+- IAM: Identity and Access management
+- IAM is a global service. When we created an account, we created a global account.
+- Users are people within your organization and can be grouped. Group only contains users, not other groups. Users don't have to belong to a group and user can belong to multiple groups.
+
+- Users or groups can be assigned JSON documents called policies. These policies define the permissions of the users. In AWS, you apply the least privilege principle; don't give more permissions than a user needs.
+
+- Practically
+    1. After creating account in aws, we will get IAM control.
+    2. search IAM and create new user; add user to group.
+    3. Policy Inheritance can be done for a group. Or, if done for a user, it will be called inline policy.
+
+- IAM Policies JSON structure consists of version, id (optional), statements. Statements consist of:
+    1. Sid: an identifier for the statement (optional)
+    2. Effect: weather the statement allows or denies access.
+    3. Principal: account/user/role to which this policy applied to.
+    4. Action: List of Actions this policy allows or denies.
+    5. Resource: List of resources to which the actions applied to.
+    6. Condition: Conditions for when this policy is in effect (optional)
+
+-Defense Mechanism
+    - Password Policy: policy for strong password, minimum length, required specific chars, allow all users to change their own password, password expiration, prevent password re-use.
+    - Multi Factor Authentication: You want to protect your root account and IAM users. MFA= Password you know + Security Device you own. If a password is stolen or hacked, the account is not compromised. Options:
+        1. Virtual MFA Device
+        2. Google Authenticator(one phone at a time)
+        3. Authy (can use account on multi device, support for multiple tokens for a single device.)
+        4. Universal 2nd Factor(U2F) Security key: 3rd Party aws YubiKey by Yubico, we use a physical device here. Support multiple root and IAM users.
+        5. Hardware Key Fob MFA Device provided by Gemalto
+        6. Hardware Key Fob MFA Device for AWS GovCloud provided by SurePassId
+
+- To access AWS, we have three options:
+        1. AWS management console
+        2. AWS command line interface protected by access keys
+        3. AWS software Developer Kit(SDK) protected by access keys.
+    -Access Keys are generated through the AWS console.
+    - Access Key ID ~= username, Secret Access Key ~= password
+    - AWS CLI is a tool that enables us to interact with AWS services using commands, direct access to the public APIs of AWS. We can develop scripts to manage our resources. It is just an alternative to using AWS management console. Open source in- https:://github.com/aws/aws-cli. other alternative is CloudeShell.
+    - AWS SDK enables us to access and manage AWS services programmatically, embedded withing our application. SDKs- Javascript, Python, PHP, .NET, Ruby, Java, Go, Nodejs, C++, Android, iOS, Embedded C, Arduino. Ex. AWS CLI is build on AWS SDK for python.
+
+    - IAM Role for Services: Some AWS Services will need to perform actions on your behalf. To do so, we will assign permissions to AWS services with IAM roles. Common roles- EC2 Instance Roles, Lambda Function Roles, Roles for CloudFormation.
+
+    - IAM Security tools:
+        1. IAM Credentials Report(account-level): A report that lists all your account's users and the status of their various Credentials
+        2. IAM Access Advisor(user-level): Access advisor shows the service permissions granted to a user and when those services were last accessed. We can this information to revise our policies.
+
+- IAM Best Practices
+        1. Don't use the root account except for AWs account setup.
+        2. One physical user = one AWS user
+        3. Assign users to groups and assign permissions to groups
+        4. Create a strong password policy.
+        5. Use and enforce the use of MFA
+        6. Create and use roles for giving permissions to AWS services.
+        7. Use access keys for SDK
+
+- Shared Responsibility Model for IAM:
+        1. AWS is responsible for all the infrastructure like configuration and vulnerability analysis etc.
+        2. We are responsible for users, groups, roles, policies, enabling mfa, using IAM tools, analyze access patterns etc.
