@@ -1,0 +1,69 @@
+- EC2 is one of the most popular AWS' offering (Elastic Compute Cloud)- Infrastructure as a service
+- It mainly consists the capability of
+    1. Renting Virtual Machines(EC2)
+    2. Storing data on virtual drives(EBS)
+    3. Distributing Load Across Machines(ELB)
+    4. Scaling the services using an auto0scaling group (ASG)
+- Knowing EC2 is fundamental to understand how the cloud works.
+
+- Configuration Options:
+    1. Operating System (Linux, Windows, Mac OS)
+    2. How much compute powers and cors (CPU)
+    3. How much RAM
+    4. How much storage space.
+    5. Network Card: Speed of the Card, Public IP address
+    6. Firewall Rules: Security group
+    7. Bootstrap Script(configure at first launch)
+
+- EC2 User Data: It is possible to bootstrap our instances using an EC2 User Data script. Bootstrapping means launching commands when a machine starts. That script is only run once at the instance first start. EC2 user data is used to automate boot tasks such as: installing updates, installing software. downloading common files from the internet and anything we can think of. It runs with the root user.
+
+- EC2 instance types ex. t2.micro has 1 vCPU, 1 Gib Mem, EBS-only memory, Network performance is low to moderate. It is free tier. and so on.
+
+- Instance Naming: Ex. m5.2xlarge. Here, 
+    m: instance class
+    5: generation(AWS improves them over time)
+    2xlarge: size within the instance class
+
+- EC2 instance types:
+    1. General Purpose (t): Great for a diversity of workloads such as web servers or code repositories. Balance between compute, memory, networking.
+
+    2. Compute Optimized(c): Great for copute-intensive tasks that require high performance processors(Batch processing workloads, media transcoding, high performance web servers, high performance computing or HPC, Machine learning, dedicated gaming servers)
+
+    3. Memory Optimized(r): Fast performance for workloads that process large data sets in memory(high performance relational/non-r database, distributed web scales cache stores, business intelligence, real time processing)
+
+    4. Accelerated Computing:
+
+    5. Storage Optimized(D): Great for storage intensive tasks that require high, sequential read and write access to large data sets on local storage(Hih performance online transaction processing or OLTP systems, relational and noSQL databases, cache for in-memory databases, data warehousing applications, distributed file systems)
+
+    6. Instance Features:
+    7. Measuring Instance Performance:
+
+- Security Groups: They control how traffic is allows into or out of our EC2 instance. It only contains allow rules. It can be referenced by IP or by security group. It acts as a firewall on EC2 instance. The regulate access to ports, ip ranges, inbound and outbound network. It can be attached to multiple instances. Locked down to a region/VPC combination. It is good to maintain one separate security group for SSH access. If your application is not accessible(time out), then it's a security group issue. If your application gives a 'connection refused' error, then it's an application error or it's not launched.
+
+- Classic Ports to Know:
+     22 = SSH (Secure Shell)- log into a Linux instance
+     21 = FTP (File Transfer Protocol) - Upload Files into a file share.
+     22 = SFTP (Secure FTP) - Upload Files using SSH
+     80 = HTTP - access unsecured website
+     443 = HTTPS - access secured website
+     3389 = RDP (Remote Desktop protocol) - log into a windows instance
+
+- SSH is for mac, linux and >=windows 10. and for <windows10, there is putty. EC2 instance connect works for all.
+
+- SSH is one of the most important function. It allows us to control a remote machine, all using the command line. SSH, which stands for Secure Shell, is like a secret password for your computer. It's a way to securely connect to and control another computer over the internet. Imagine it as a secret tunnel that lets you communicate with a remote computer in a safe and encrypted way. SSH is commonly used for tasks like logging into remote servers, copying files securely between computers, and even running commands on a distant machine as if you were right there. In simple terms, SSH keeps your online interactions private and secure, preventing unauthorized access to your computer or the computer you're connecting to.
+
+- Using SSH command in windows 10: (download pem file)
+    SSH
+    ssh -i .\EC2name.pem ec2-user@your-public-ip
+    now, we will be in machine.
+
+    Commands for IAM:
+    aws --version
+    aws configure
+    aws iam list-users
+
+- Alternative to SSH: Ec2 instance connect- browser based aws cli
+
+- Shared Responsibility Model for EC2
+    AWS: Infrastructure, Isolation on physical hosts, replacing faculty hardware, compilance validation
+    User: Security groups Rule, Operating System patches and updates, software and utilities installed on the EC2 instance, IAM roles assigned to EC2, data security on your instance.
